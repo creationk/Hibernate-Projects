@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration status="trace">
+	<customLevels>
+		<customLevel name="MYLOG" intLevel="350" />
+	</customLevels>
+	<appenders>
+		    
+		<useJansi>true</useJansi>
+
+		<console name="SlowConsole" target="SYSTEM_OUT">
+			<patternLayout pattern="%d{HH:mm:ss,SSS} 
+			%-5p %m (%F:%L) in %t%n" />
+		</console>
+		<!-- <console name="SlowConsole" target="SYSTEM_OUT"> <patternLayout pattern="%highlight{%d{HH:mm:ss.SSS} 
+			%-5level %logger{36}.%M() @%L - %msg%n} {FATAL=red blink, ERROR=red, WARN=yellow 
+			bold, INFO=black, DEBUG=green bold, TRACE=blue}" /> </console> -->
+	</appenders>
+
+	<loggers>
+		<root level="INFO">
+			<appenderRef ref="SlowConsole" />
+		</root>
+		<logger name="org.hibernate.type" level="ALL" />
+		<logger name="org.hibernate.SQL" level="ALL" />
+		<logger name="org.hibernate" level="ALL" />
+
+	</loggers>
+</configuration>
